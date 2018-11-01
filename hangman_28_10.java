@@ -169,14 +169,15 @@ class hangman_28_10
             System.exit(0);
     }
 
-    void main()throws FileNotFoundException
+    static void main()throws FileNotFoundException
     {
-        input();
-        arrays();
-        len_str();
-        guess();
-        score();
-        highscore();
-        restart();
+        hangman_28_10 obj = new hangman_28_10();
+        obj.input();
+        obj.arrays();
+        obj.len_str();
+        obj.guess();
+        obj.score();
+        obj.highscore();
+        obj.restart();
     }
 }
