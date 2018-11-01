@@ -14,6 +14,7 @@ class hangman_28_10
     String guess;
     int hang;
     int score;
+    int score1;//void repeat
     int highscore;
     private static Scanner x;//scanner step 1
     void input()//accept all inputs
@@ -114,21 +115,36 @@ class hangman_28_10
 
     void score()
     {
-        score = ((7 - hang)+1);
+        score = ((7 - hang));
         System.out.println("You scored1: " + score);
+    }
+    
+    void repeat()throws FileNotFoundException
+    {
+        System.out.println("function entered");
+        for(score1 = score; hang != 7; score1 += score)
+        {
+            System.out.println("loop entered");
+            System.out.println("you scored2: " + score1);
+            input();
+            arrays();
+            len_str();
+            guess();
+            score();
+        }
     }
    
     void highscore()throws FileNotFoundException
     {
         //printing highscore
-        if(score > highscore)
-            highscore = score;
+        if(score1 > highscore)
+            highscore = score1;
         PrintWriter pw = new PrintWriter(new File("board.csv"));//trace filepath
         StringBuilder sb = new StringBuilder();
         sb.append(highscore);
         pw.write(sb.toString());//writes into the csv file
         pw.close();
-        System.out.println("You scored: " + score);
+        System.out.println("You scored: " + score1);
         
         //reading csv file
         
@@ -177,6 +193,7 @@ class hangman_28_10
         obj.len_str();
         obj.guess();
         obj.score();
+        obj.repeat();
         obj.highscore();
         obj.restart();
     }
