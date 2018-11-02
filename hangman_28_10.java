@@ -15,8 +15,9 @@ class hangman_28_10
     int hang;
     int score;
     int score1;//void repeat
-    int highscore;
+    //int highscore;
     private static Scanner x;//scanner step 1
+    //game module$$$$$
     void input()//accept all inputs
     {
         choice = sc.nextInt();//choice of category
@@ -112,19 +113,17 @@ class hangman_28_10
         if (guess_len == 0)
             System.out.println("yaay!");
     }
-
+    // scoring module$$$$$
     void score()
     {
         score = ((7 - hang));
         System.out.println("You scored1: " + score);
     }
-    
+
     void repeat()throws FileNotFoundException
     {
-        System.out.println("function entered");
         for(score1 = score; hang != 7; score1 += score)
         {
-            System.out.println("loop entered");
             System.out.println("you scored2: " + score1);
             input();
             arrays();
@@ -133,23 +132,14 @@ class hangman_28_10
             score();
         }
     }
-   
+
     void highscore()throws FileNotFoundException
     {
-        //printing highscore
-        if(score1 > highscore)
-            highscore = score1;
-        PrintWriter pw = new PrintWriter(new File("board.csv"));//trace filepath
-        StringBuilder sb = new StringBuilder();
-        sb.append(highscore);
-        pw.write(sb.toString());//writes into the csv file
-        pw.close();
-        System.out.println("You scored: " + score1);
-        
+
         //reading csv file
-        
+        int highscore;
         String filepath = "board.csv";
-        String id = "";
+        String high_str = "";
         boolean found = false;
         try
         {
@@ -158,7 +148,7 @@ class hangman_28_10
 
             while(x.hasNext() )
             {
-                id = x.next();
+                high_str = x.next();
                 found = true;
             }
         }
@@ -168,11 +158,25 @@ class hangman_28_10
         }
         if (found == true)
         {     
-            int id1 = Integer.parseInt(id);
-            System.out.println("highscore = " + id1);
+            highscore = Integer.parseInt(high_str);
+            //System.out.println("highscore = " + highscore);
         }
         else 
+        {    
             System.out.println("Record not found");
+            highscore = 0;
+        }
+
+        //printing highscore
+        if(score1 > highscore)
+            highscore = score1;
+        PrintWriter pw = new PrintWriter(new File("board.csv"));//trace filepath
+        StringBuilder sb = new StringBuilder();
+        sb.append(highscore);
+        pw.write(sb.toString());//writes into the csv file
+        pw.close();
+        System.out.println("Highscore: " + highscore);
+
     }
     
     void restart()throws FileNotFoundException
@@ -198,3 +202,4 @@ class hangman_28_10
         obj.restart();
     }
 }
+/*notes:  the standard font size must be 17 for proper alignment*/
