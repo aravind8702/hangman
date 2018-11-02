@@ -1,0 +1,32 @@
+project to do list:
+
+>add more choices in the arrays() function
+> introduce display system. onscreen elements are:
+	>number of guesses left*
+	>ascii man
+
+
+                System.out.println("\t    _________");
+                System.out.println("\t    |/      |");
+                System.out.println("\t    |     \\(_)/");
+                System.out.println("\t    |      \\|/");
+                System.out.println("\t    |       |");
+                System.out.println("\t    |      / \\");
+                System.out.println("\t    |     /   \\");
+                System.out.println("\t    |");
+                System.out.println("\t____|____");
+
+
+	>underscores and word with blanks 
+	>highscore
+	>current score
+>bug fixing... bugs detected: 
+	>limit the entry to only alphabets
+	>once an alphabet is entered, do not allow its entry again
+
+
+
+POSSIBLE MODIFICATIONS:
+	>introduction of versus mode to enhance the menu
+	>cool presentation of menu page
+	>

@@ -223,7 +223,11 @@ class hangman_28_10
                 System.out.println("\t____|____");
                 return;
             }
-            //ascii man ends
+            //ascii man ends  
+            
+            //onscreen elements
+            System.out.println("\t\t\t\tguesses left: " + (7-hang));
+            System.out.println("\t\t\t\tscore: " + score1);
         }
         if (guess_len == 0)
             System.out.println("yaay!");
@@ -232,14 +236,14 @@ class hangman_28_10
     void score()
     {
         score = ((7 - hang));
-        System.out.println("You scored1: " + score);
+        System.out.println("\n\ngame score: " + score);
     }
 
     void repeat()throws FileNotFoundException
     {
         for(score1 = score; hang != 7; score1 += score)
         {
-            System.out.println("you scored2: " + score1);
+            System.out.println("score: " + score1);
             input();
             arrays();
             len_str();
