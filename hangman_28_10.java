@@ -70,7 +70,18 @@ class hangman_28_10
         hang = 0;
         for (int i = 0; i<=word.length() - 1; i++)
             guess += "_";
-        System.out.println(guess);//prints number of dashes
+        //ascii man
+        System.out.println("\f");
+        System.out.println("\t    _________");
+        System.out.println("\t    |/ ");
+        System.out.println("\t    |");
+        System.out.println("\t    |");
+        System.out.println("\t    |");
+        System.out.println("\t    |");
+        System.out.println("\t    |");
+        System.out.println("\t    |");
+        System.out.println("\t____|____\t\t\t  " + guess);// guess prints no of dashes
+        //ascii man ends
         while (guess_len != 0)
         {   char ch = sc.next().charAt(0);//to accept user input of letter
             int detect = mod2.indexOf(ch);//to check if the character is there in the sting
@@ -78,12 +89,8 @@ class hangman_28_10
             {
                 hang ++;
             }
-            if (hang == 7)//man hangs at 7 tries
-            {
-                System.out.println("GAME OVER");
-                return;
-            }
-            if (detect != -1)
+
+            else if (detect != -1)
             {
                 //System.out.println("yaay!");
                 for (int j = 0; j<mod3.length()-1; j++)
@@ -103,12 +110,120 @@ class hangman_28_10
                         //clear screen
                         //System.out.println(guess);
                     }
+
                 }
-                System.out.println(guess);
+
                 guess_len--;
                 mod2 = mod2.replace(ch, '*');
+            }
+            System.out.println("\f");
+            if(hang == 0)
+            {
+                System.out.println("\t    _________");
+                System.out.println("\t    |/");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t____|____\t\t\t  " + guess);
+
+            } 
+            if(hang == 1)
+            {
+                System.out.println("\t    _________");
+                System.out.println("\t    |/      |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t____|____\t\t\t  " + guess);
 
             }
+            if(hang == 2)
+            {
+                System.out.println("\t    _________");
+                System.out.println("\t    |/      |");
+                System.out.println("\t    |      (_)");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t____|____\t\t\t  " + guess);
+
+            } 
+            if(hang == 3)
+            {
+                System.out.println("\t    _________");
+                System.out.println("\t    |/      |");
+                System.out.println("\t    |      (_)");
+                System.out.println("\t    |       |");
+                System.out.println("\t    |       |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t____|____\t\t\t  " + guess);
+
+            }   
+            if(hang == 4)
+            {
+                System.out.println("\t    _________");
+                System.out.println("\t    |/      |");
+                System.out.println("\t    |     \\(_)");
+                System.out.println("\t    |      \\|");
+                System.out.println("\t    |       |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t____|____\t\t\t  " + guess);
+
+            } 
+            if(hang == 5)
+            {
+                System.out.println("\t    _________");
+                System.out.println("\t    |/      |");
+                System.out.println("\t    |     \\(_)/");
+                System.out.println("\t    |      \\|/");
+                System.out.println("\t    |       |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t    |");
+                System.out.println("\t____|____\t\t\t  " + guess);
+
+            } 
+            if(hang == 6)
+            {
+                System.out.println("\t    _________");
+                System.out.println("\t    |/      |");
+                System.out.println("\t    |     \\(_)/");
+                System.out.println("\t    |      \\|/");
+                System.out.println("\t    |       |");
+                System.out.println("\t    |      /");
+                System.out.println("\t    |     /");
+                System.out.println("\t    |");
+                System.out.println("\t____|____\t\t\t  " + guess);
+
+            } 
+            if (hang == 7)//man hangs at 7 tries
+            {
+                System.out.println("GAME OVER\n\n");
+                // ascii man
+                System.out.println("\t    _________");
+                System.out.println("\t    |/      |");
+                System.out.println("\t    |     \\(_)/");
+                System.out.println("\t    |      \\|/\t\t your word was: " + word);
+                System.out.println("\t    |       |");
+                System.out.println("\t    |      / \\");
+                System.out.println("\t    |     /   \\");
+                System.out.println("\t    |");
+                System.out.println("\t____|____");
+                return;
+            }
+            //ascii man ends
         }
         if (guess_len == 0)
             System.out.println("yaay!");
@@ -178,7 +293,7 @@ class hangman_28_10
         System.out.println("Highscore: " + highscore);
 
     }
-    
+
     void restart()throws FileNotFoundException
     {
         System.out.println("Restart or quit? r/q");
