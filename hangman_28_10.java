@@ -83,7 +83,13 @@ class hangman_28_10
         System.out.println("\t____|____\t\t\t  " + guess);// guess prints no of dashes
         //ascii man ends
         while (guess_len != 0)
-        {   char ch = sc.next().charAt(0);//to accept user input of letter
+        {   
+            char ch = '1';
+            while(Character.isLetter(ch) == false)
+            {    
+                System.out.println("please enter a letter: ");
+                ch = sc.next().charAt(0);//to accept user input of letter
+            }
             int detect = mod2.indexOf(ch);//to check if the character is there in the sting
             if (detect == -1)
             {
@@ -224,7 +230,7 @@ class hangman_28_10
                 return;
             }
             //ascii man ends  
-            
+
             //onscreen elements
             System.out.println("\t\t\t\tguesses left: " + (7-hang));
             System.out.println("\t\t\t\tscore: " + score1);
@@ -241,11 +247,34 @@ class hangman_28_10
 
     void repeat()throws FileNotFoundException
     {
-        for(score1 = score; hang != 7; score1 += score)
+        int n = arr.length;
+        for(score1 = score; hang != 7; score1 += score, n--)
         {
             System.out.println("score: " + score1);
-            input();
-            arrays();
+            System.out.println("continue? (y = 1/n = 0): ");
+            int cont = sc.nextInt();
+            if (cont == 0)
+                System.exit(0);
+            //input();
+            for (int i = an+1; i<n; i++)
+            {
+                arr[i-1] = arr[i];
+            }
+            System.out.println("Array elements: ");
+            for(int i = 0; i<n; i++)
+            {
+                System.out.println(arr[i]);
+            }
+            a = n - 1;//to find limit of the array for use in random number generator
+            b = 0;//lower limit
+            an = (int) (Math.random()*(a-b) + b);//random number within limit of 
+            word = arr[an];//word at random position
+            //arrays();
+            if(n == 1)
+            {
+                System.out.println("limit reached!!!");
+                return;
+            }
             len_str();
             guess();
             score();
