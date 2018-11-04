@@ -71,7 +71,7 @@ class hangman_28_10
         for (int i = 0; i<=word.length() - 1; i++)
             guess += "_";
         //ascii man
-        System.out.println("\f");
+        //System.out.println("\f");
         System.out.println("\t    _________");
         System.out.println("\t    |/ ");
         System.out.println("\t    |");
@@ -82,15 +82,37 @@ class hangman_28_10
         System.out.println("\t    |");
         System.out.println("\t____|____\t\t\t  " + guess);// guess prints no of dashes
         //ascii man ends
+        int counter = 0;
+        char used_letters[] = new char[27];
         while (guess_len != 0)
         {   
             char ch = '1';
+            counter++;
             while(Character.isLetter(ch) == false)
             {    
                 System.out.println("please enter a letter: ");
                 ch = sc.next().charAt(0);//to accept user input of letter
             }
-            int detect = mod2.indexOf(ch);//to check if the character is there in the sting
+            // linear search for letter repitition check
+            for(int i = 0 ; i<26; i++)
+            {
+                System.out.println(used_letters[i]);
+            }
+            for(int i = 0; i<counter; i++)
+            {
+                if(used_letters[i] ==ch)
+                {
+                    System.out.println("do not enter the same letter twice... try again: ");
+                    ch = sc.next().charAt(0);
+                }
+                else
+                {
+                    used_letters[counter] = ch;
+                    //System.out.println(used_letters[counter]);
+                }
+                
+            }
+            int detect = mod2.indexOf(ch);//to check if the character is there in the string
             if (detect == -1)
             {
                 hang ++;
@@ -122,7 +144,7 @@ class hangman_28_10
                 guess_len--;
                 mod2 = mod2.replace(ch, '*');
             }
-            System.out.println("\f");
+            //System.out.println("\f");
             if(hang == 0)
             {
                 System.out.println("\t    _________");
