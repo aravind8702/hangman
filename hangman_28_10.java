@@ -18,9 +18,56 @@ class hangman_28_10
     //int highscore;
     private static Scanner x;//scanner step 1
     //game module$$$$$
-    void input()//accept all inputs
+    void main_menu()throws FileNotFoundException
     {
-        choice = sc.nextInt();//choice of category
+        //header
+        System.out.println("88");                                                                            
+        System.out.println("88                                                                                        ______________________________________");                                                                             
+        System.out.println("88                                                                                        |                                    |");                                                                             
+        System.out.println("88,dPPYba,  ,adPPYYba, 8b,dPPYba,   ,adPPYb,d8 88,dPYba,,adPYba,  ,adPPYYba, 8b,dPPYba,   |     ______    ______    ______     |");   
+        System.out.println("88P'    '8a ''     `Y8 88P'   `'8a a8'    `Y88 88P'   '88'    '8a ''     `Y8 88P'   `'8a  |    /      \\  /      \\  /      \\    |");  
+        System.out.println("88       88 ,adPPPPP88 88       88 8b       88 88      88      88 ,adPPPPP88 88       88  |   /$$$$$$  |/$$$$$$  |/$$$$$$  |   |");  
+        System.out.println("88       88 88,    ,88 88       88 '8a,   ,d88 88      88      88 88,    ,88 88       88  |   $$ |  $$ |$$ |  $$/ $$ |  $$ |   |"); 
+        System.out.println("88       88 `'8bbdP'Y8 88       88  `'YbbdP'Y8 88      88      88 `'8bbdP'Y8 88       88  |   $$ |__$$ |$$ |      $$ \\__$$     |");  
+        System.out.println("                                    aa,    ,88                                            |   $$    $$/ $$ |      $$    $$/    |");
+        System.out.println("                                     'Y8bbdP'                                             |   $$$$$$$/  $$/        $$$$$$/     |");    
+        System.out.println("                                                                                          |   $$ |                             |");
+        System.out.println("                                                                                          |   $$ |                             |");
+        System.out.println("                                                                                          |   $$/                              |");   
+        System.out.println("                                                                                          |                                    |");
+        System.out.println("                                                                                          --------------------------------------");  
+        //end of header
+        System.out.println("\n\n\n\n");
+        highscore();
+        System.out.println("\n\t\t\t\t\t\tPLAY (p) > ");
+        System.out.println("\n\t\t\t\t\t\tQUIT (q) > ");
+        System.out.println("\n\t\t\t\t\t\tABOUT (a) > ");
+        char menu = sc.next().charAt(0);
+        
+        //if the choice is play, give sub menu to 
+        switch(menu)
+        {
+            case 'p':
+                System.out.println("\fchoose a category: ");
+                //enter category names
+                choice = sc.nextInt();//choice of category
+                break;
+            case 'q':
+                System.exit(0);
+                break;
+            case 'a':
+                System.out.println("\fdisplay project details here");
+                System.out.println("< back(b)");
+                char back = sc.next().charAt(0);
+                if(back == 'b')
+                {
+                    main_menu();
+                }
+                break;
+            default :
+                main_menu();
+                break;
+        }
     }
 
     void arrays()//to define arrays and obtain the word from them
@@ -71,7 +118,7 @@ class hangman_28_10
         for (int i = 0; i<=word.length() - 1; i++)
             guess += "_";
         //ascii man
-        //System.out.println("\f");
+        System.out.println("\f");
         System.out.println("\t    _________");
         System.out.println("\t    |/ ");
         System.out.println("\t    |");
@@ -94,10 +141,10 @@ class hangman_28_10
                 ch = sc.next().charAt(0);//to accept user input of letter
             }
             // linear search for letter repitition check
-            for(int i = 0 ; i<26; i++)
+            /*for(int i = 0 ; i<26; i++)
             {
-                System.out.println(used_letters[i]);
-            }
+            System.out.println(used_letters[i]);
+            }*/
             for(int i = 0; i<counter; i++)
             {
                 if(used_letters[i] ==ch)
@@ -110,7 +157,7 @@ class hangman_28_10
                     used_letters[counter] = ch;
                     //System.out.println(used_letters[counter]);
                 }
-                
+
             }
             int detect = mod2.indexOf(ch);//to check if the character is there in the string
             if (detect == -1)
@@ -144,7 +191,7 @@ class hangman_28_10
                 guess_len--;
                 mod2 = mod2.replace(ch, '*');
             }
-            //System.out.println("\f");
+            System.out.println("\f");
             if(hang == 0)
             {
                 System.out.println("\t    _________");
@@ -176,7 +223,7 @@ class hangman_28_10
                 System.out.println("\t    _________");
                 System.out.println("\t    |/      |");
                 System.out.println("\t    |      (_)");
-                System.out.println("\t    |");
+                System.out.println("\t    |"); 
                 System.out.println("\t    |");
                 System.out.println("\t    |");
                 System.out.println("\t    |");
@@ -362,7 +409,7 @@ class hangman_28_10
     static void main()throws FileNotFoundException
     {
         hangman_28_10 obj = new hangman_28_10();
-        obj.input();
+        obj.main_menu();
         obj.arrays();
         obj.len_str();
         obj.guess();
