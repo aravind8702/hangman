@@ -9,7 +9,6 @@ class hangman_28_10
     int b;
     int an;
     String word;
-    int c;
     int guess_len;
     String guess;
     int hang;
@@ -43,30 +42,30 @@ class hangman_28_10
         System.out.println("\n\t\t\t\t\t\tQUIT (q) > ");
         System.out.println("\n\t\t\t\t\t\tABOUT (a) > ");
         char menu = sc.next().charAt(0);
-        
+
         //if the choice is play, give sub menu to 
         switch(menu)
         {
             case 'p':
-                System.out.println("\fchoose a category: ");
-                //enter category names
-                choice = sc.nextInt();//choice of category
-                break;
+            System.out.println("\fchoose a category: ");
+            //enter category names
+            choice = sc.nextInt();//choice of category
+            break;
             case 'q':
-                System.exit(0);
-                break;
+            System.exit(0);
+            break;
             case 'a':
-                System.out.println("\fdisplay project details here");
-                System.out.println("< back(b)");
-                char back = sc.next().charAt(0);
-                if(back == 'b')
-                {
-                    main_menu();
-                }
-                break;
-            default :
+            System.out.println("\fdisplay project details here");
+            System.out.println("< back(b)");
+            char back = sc.next().charAt(0);
+            if(back == 'b')
+            {
                 main_menu();
-                break;
+            }
+            break;
+            default :
+            main_menu();
+            break;
         }
     }
 
@@ -75,7 +74,7 @@ class hangman_28_10
         if (choice == 1)
             arr = new String[]{"idlis", "dosas", "vadas", "rices"};
         if (choice == 2)
-            arr = new String[]{"maths", "science", "language", "social"};
+            arr = new String[]{"ma ths", "sci ence", "lang uage", "so cial"};
         a = arr.length - 1;//to find limit of the array for use in random number generator
         b = 0;//lower limit
         an = (int) (Math.random()*(a-b) + b);//random number within limit of 
@@ -87,7 +86,8 @@ class hangman_28_10
     void len_str()//to find length of word excluding repititions
     {
         String mod = word + " ";//modifiable string
-        c = 0;//counter
+        int c1 = 0;//counter
+        int c2 = 0;//counter
         for (int i = 0; i< mod.length() - 1; i++)
         {
             char ch1 = mod.charAt(i);
@@ -96,17 +96,22 @@ class hangman_28_10
                 char ch2 = mod.charAt(j);
                 if (ch1 == ch2 && ch1 != '*')
                 {    
-                    c++;
+                    c1++;
                 }
+            }
+            if (ch1 == ' ')
+            {
+                c2++;
             }
             //System.out.println(ch1);
             //System.out.println(c);
             mod = mod.replace(ch1, '*');
             //c = 0;
         }
-        guess_len = word.length() - c;//eliminating repeated letters from length
+        guess_len = word.length() - c1 - c2;//eliminating repeated letters and whitespaces from length
         System.out.println(guess_len);
-        System.out.println(c);
+        System.out.println(c1);
+        System.out.println(c2);
     }
 
     void guess()
@@ -116,7 +121,12 @@ class hangman_28_10
         guess = "";
         hang = 0;
         for (int i = 0; i<=word.length() - 1; i++)
-            guess += "_";
+        {    
+            if(word.charAt(i) == ' ')
+                guess += " ";
+            else
+                guess += "_";
+        }
         //ascii man
         System.out.println("\f");
         System.out.println("\t    _________");
@@ -320,9 +330,9 @@ class hangman_28_10
         for(score1 = score; hang != 7; score1 += score, n--)
         {
             System.out.println("score: " + score1);
-            System.out.println("continue? (y = 1/n = 0): ");
-            int cont = sc.nextInt();
-            if (cont == 0)
+            System.out.println("continue? (y/n): ");
+            char cont = sc.next().charAt(0);
+            if (cont == 'n')
                 System.exit(0);
             //input();
             for (int i = an+1; i<n; i++)
@@ -419,4 +429,4 @@ class hangman_28_10
         obj.restart();
     }
 }
-/*notes:  the standard font size must be 17 for proper alignment*/
+/*notes:  the standard font size must be 13 for proper alignment*/
