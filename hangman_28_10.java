@@ -56,7 +56,10 @@ class hangman_28_10
             System.out.println("\n\tOption 5: Shows"); 
             System.out.println("\n\tOption 6: Animals");
             //enter category names
-            choice = sc.nextInt();//choice of category
+            System.out.println("enter your choice (1-6) : ");
+            choice = 9;
+            while (choice<1 || choice>6)
+                choice = sc.nextInt();//choice of category
             break;
             case 'q':
             System.exit(0);
