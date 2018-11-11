@@ -5,15 +5,16 @@ class hangman_28_10
     Scanner sc = new Scanner(System.in);
     int choice ;
     String[] arr;
-    int a;
-    int b;
-    int an;
+    int a;//for random number generation
+    int b;//for random number generation
+    int an;//for random number generation
     String word;
     int guess_len;
     String guess;
     int hang;
     int score;
     int score1;//void repeat
+    String category;
     //int highscore;
     private static Scanner x;//scanner step 1
     //game module$$$$$
@@ -55,11 +56,15 @@ class hangman_28_10
             System.out.println("\n\tOption 4: Movies");
             System.out.println("\n\tOption 5: Shows"); 
             System.out.println("\n\tOption 6: Animals");
+            String submenu[] = {"Food and fruits", "Subjects and fields of study", "Sports", "Movies", "Shows", "Animals"};
+            
             //enter category names
             System.out.println("enter your choice (1-6) : ");
             choice = 9;
             while (choice<1 || choice>6)
                 choice = sc.nextInt();//choice of category
+            category = submenu[choice - 1];
+                
             break;
             case 'q':
             System.exit(0);
@@ -153,6 +158,7 @@ class hangman_28_10
         }
         //ascii man
         System.out.println("\f");
+        System.out.println("category: " + category);
         System.out.println("\t    _________");
         System.out.println("\t    |/ ");
         System.out.println("\t    |");
@@ -226,6 +232,7 @@ class hangman_28_10
                 mod2 = mod2.replace(ch, '*');
             }
             System.out.println("\f");
+            System.out.println("category: " + category);
             if(hang == 0)
             {
                 System.out.println("\t    _________");
@@ -330,6 +337,7 @@ class hangman_28_10
                 System.out.println("\t    |     /   \\");
                 System.out.println("\t    |");
                 System.out.println("\t____|____");
+                System.out.println("score: " + score1);
                 return;
             }
             //ascii man ends  
@@ -357,7 +365,7 @@ class hangman_28_10
             System.out.println("continue? (y/n): ");
             char cont = sc.next().charAt(0);
             if (cont == 'n')
-                System.exit(0);
+                main();
             //input();
             for (int i = an+1; i<n; i++)
             {
