@@ -3,7 +3,7 @@ import java.io.*;
 class hangman_28_10
 {
     Scanner sc = new Scanner(System.in);
-    int n_choice ;
+    int choice ;
     String[] arr;
     int a;//for random number generation
     int b;//for random number generation
@@ -57,32 +57,21 @@ class hangman_28_10
             System.out.println("\n\tOption 5: Shows"); 
             System.out.println("\n\tOption 6: Animals");
             String submenu[] = {"Food and fruits", "Subjects and fields of study", "Sports", "Movies", "Shows", "Animals"};
-
+            
             //enter category names
             System.out.println("enter your choice (1-6) : ");
-            char choice = sc.next().charAt(0);//choice of category
-            n_choice = (int)choice - 48;
-            boolean flag = false;
-            while (flag == false)
-            {
-                if(n_choice>=1 && n_choice<=6)
-                    flag = true;
-                else
-                {
-                    System.out.println ("enter numbers only from 1 to 6!");
-                    choice = sc.next().charAt(0);//choice of category
-                    n_choice = (int)choice - 48;
-                }
-            }
-            category = submenu[n_choice - 1];
-
+            choice = 9;
+            while (choice<1 || choice>6)
+                choice = sc.nextInt();//choice of category
+            category = submenu[choice - 1];
+                
             break;
             case 'q':
             System.exit(0);
             break;
             case 'a':
-
-            System.out.println("\fThis game is created by Aravind Krishnan.A and Advik Giridhar as a part of our 10th grade Board Project.");
+            
+            System.out.println("\fThis game is created by Aravind Krishnan Anand and Advik Giridhar as a part of our 10th grade Board Project.");
             System.out.println("Hangman is a game in which one player tries to guess the letters of a word in seven chances.");
             System.out.println("We record the failed attempts by the player by drawing a gallow and a man hanging on it,line by line (mistake by mistake)");
             System.out.println("\n\n\t\t\t\t*********ACKNOWLEDGEMENTS***********\nWe extend a special thanks to our computer teacher Mrs.Padma and the ICSE Board for this wonderful opportunity");
@@ -103,17 +92,17 @@ class hangman_28_10
 
     void arrays()//to define arrays and obtain the word from them
     {
-        if (n_choice == 1)
+        if (choice == 1)
             arr = new String[]{"idli", "aloo paratha", "cereal", "pancake", "dosa", "omelette","baked beans", "pomegranate", "avocado", "passion fruit", "cranberry", "apricots", "cantaloupe", "nectarine","apple", "banana", "bread", "sandwich", "burger", "pizza", "bagel", "baguette", "guava", "pomagranate", "cake", "pastry", "ice cream", "pasta", "noodles", "spaghetti", "ketchup", "mayonnaise","dumplings", "fried rice", "apple pie", "salads", "tomato soup","orange", "grape", "dates", "grapefruit" };
-        if (n_choice == 2)
+        if (choice == 2)
             arr = new String[]{"mathematics", "computer science", "physics", "history", "geography", "chemistry", "biology", "literature", "sociology","economics", "software engineering", "law", "medicine", "nursing", "agricultural", "archaeology","political science", "biotechnology", "industrial design", "animal science", "mechanical engineering", "sound engineering", "philosophy", "journalism", "linguistics", "arts", "astronomy", "statistics", };
-        if (n_choice == 3)
+        if (choice == 3)
             arr = new String[]{"badminton", "tennis", "volleyball", "hockey", "archery", "wrestling", "golf", "surfing","kayaking", "canoeing", "rafting", "diving", "rowing", "synchronised swimming", "boxing", "gymnastics", "cycling", "discus throw", "fencing", "judo", "karate", "kickboxing", "long jump", "high jump", "pole vault", "sprint", "walking", "weightlifting", "cricket", "dodgeball", "football", "golf", "handball", "ice hockey", "lacrosse", "polo", "rugby", "squash", "skydiving", "paragliding", "parachuting", "snowboarding", "formula racing", "chess"};
-        if (n_choice == 4)
+        if (choice == 4)
             arr = new String[]{"the avengers", "john wick", "the social network", "titanic", "the wolf of wall street", "mission impossible", "ratatouille", "the shawshank redemption", "forrest gump", "schindler's list", "the godfather", "the green mile", "hotel rwanda", "the bucket list", "the terminal", "catch me if you can", "saving private ryan", "cast away", "blood diamond", "gandhi", "titanic", "the pursuit of happyness", "little miss sunshine", "gladiator", "the matrix", "king kong", "troy", "toy story", "shrek", "iron man", "the prestige", "django unchained", "avatar", "harry potter", "star wars", "the lord of the rings", "the amazing spiderman", "johnny english", "mr beans holiday", "terminator", "justice league", "transporter", "rambo", "rocky", "escape plan", "the incredibles", "jurassic park", "now you see me", "the da vinci code", "angels and demons", "inferno", "jaws", "the dark knight", "man of steel", "jumanji", "pirates of the carribean", "rainman", "ice age", "the conjuring", "cars","despicable me"};
-        if (n_choice == 5)
+        if (choice == 5)
             arr = new String[]{"riverdale", "friends", "bojack horesemen", "orange is the new black", "the flash", "gotham", "black mirror","game of thrones", "the walking dead", "legends of tomorrow", "dexter", "breaking bad", "arrow", "the big bang theory", "brooklyn nine nine", "two and a half men", "breathe", "how i met your mother", "suits", "the simpsons", "family guy", "south park", "the vampire diaries", "the x files", "curb your enthusiasm", "rick and morty", "sherlock", "supernatural", "modern family", "prison break", "the office", "house of cards", "star trek", "survivor", "ncis", "hannibal", "glee", "grimm", "pretty little liars", "gossip girl", "saturday night live", "top gear", "mr bean", "whose line is it anyway", "impractical jokers", "scooby doo",  };
-        if (n_choice == 6)
+        if (choice == 6)
             arr = new String[]{"racoon", "hedgehog", "armadillo", "hyena", "aardvark", "albatross", "alligator", "alpaca", "anteater", "badger", "baboon", "bear", "beaver", "bat", "bison", "boar", "buffalo","bison", "camel", "cat", "caterpillar", "cow", "chameleon", "cheetah", "chicken", "chimpanzee", "crab", "crocodile", "crane", "deer", "dog", "dogfish", "dolphin", "donkey", "dove", "duck", "eagle", "echinda", "eel", "elephant", "ferret", "falcon", "fox", "frog", "gazelle", "gerbil", "giraffe", "goat", "gorilla", "guinea pig", "hamster", "hawk", "horse", "hyena", "impala", "jaguar", "jellyfish", "kangaroo", "komodo dragon", "koala", "lemur", "leopard", "lion", "llama", "lobster", "mallard", "mammoth", "mandrill", "mongoose", "monkey", "mole", "moose", "mouse", "octopus", "ostrich", "otter", "oyster", "panther", "pigeon", "polar bear", "porpoise", "porcupine", "rabbit", "raccoon", "reindeer", "rhinoceros", "salamander", "salmon", "sea lion", "sheep", "skunk", "sloth", "snail", "shark", "spider", "squid", "squirrel", "turtle", "wallaby", "walrus", "whale", "wombat", "zebra" };
         a = arr.length - 1;//to find limit of the array for use in random number generator
         b = 0;//lower limit
@@ -375,24 +364,8 @@ class hangman_28_10
             System.out.println("score: " + score1);
             System.out.println("continue? (y/n): ");
             char cont = sc.next().charAt(0);
-            cont = Character.toLowerCase(cont);
-            boolean flag = false;
-            while (flag == false)
-            {    
-                if(cont == 'y' || cont == 'n')
-                {
-                    flag = true;
-                    if (cont == 'n')
-                        main();
-                }
-                else
-                {
-                    System.out.println("enter only y or n!");
-                    cont = sc.next().charAt(0);
-                    cont = Character.toLowerCase(cont);
-                }
-            }
-
+            if (cont == 'n')
+                main();
             //input();
             for (int i = an+1; i<n; i++)
             {
@@ -445,7 +418,7 @@ class hangman_28_10
         if (found == true)
         {     
             highscore = Integer.parseInt(high_str);
-            System.out.println("highscore = " + highscore);
+            //System.out.println("highscore = " + highscore);
         }
         else 
         {    
@@ -455,43 +428,24 @@ class hangman_28_10
 
         //printing highscore
         if(score1 > highscore)
-        {
             highscore = score1;
-            PrintWriter pw = new PrintWriter(new File("board.csv"));//trace filepath
-            StringBuilder sb = new StringBuilder();
-            sb.append(highscore);
-            pw.write(sb.toString());//writes into the csv file
-            pw.close();
-            System.out.println("Highscore: " + highscore);
-        }
+        PrintWriter pw = new PrintWriter(new File("board.csv"));//trace filepath
+        StringBuilder sb = new StringBuilder();
+        sb.append(highscore);
+        pw.write(sb.toString());//writes into the csv file
+        pw.close();
+        System.out.println("Highscore: " + highscore);
+
     }
 
     void restart()throws FileNotFoundException
     {
         System.out.println("Restart or quit? r/q");
         char re = sc.next().charAt(0);
-        re = Character.toLowerCase(re);
-        boolean flag = false;
-
-        while(flag == false)
-        {
-            if (re == 'r')
-            {    
-                main();
-                flag = true;
-            }
-            else if (re == 'q')
-            {    
-                System.exit(0);
-                flag = true;
-            }
-            else
-            {
-                System.out.println("enter only r or q!");
-                //re = sc.next().charAt(0);
-                re = Character.toLowerCase(sc.next().charAt(0));
-            }
-        }
+        if (re == 'r')
+            main();
+        else if (re == 'q')
+            System.exit(0);
     }
 
     static void main()throws FileNotFoundException
