@@ -189,7 +189,13 @@ class hangman_28_10
             while(Character.isLetter(ch) == false)
             {    
                 System.out.println("please enter a letter: ");
-                ch = sc.next().charAt(0);//to accept user input of letter
+                String ch_str = sc.nextLine();
+                while(ch_str.length() != 1)
+                {
+                    System.out.println("please enter only one letter at a time");
+                    ch_str = sc.nextLine();
+                }
+                ch = ch_str.charAt(0);//to accept user input of letter
             }
             // linear search for letter repitition check
             /*for(int i = 0 ; i<26; i++)
@@ -201,7 +207,13 @@ class hangman_28_10
                 if(used_letters[i] ==ch)
                 {
                     System.out.println("do not enter the same letter twice... try again: ");
-                    ch = sc.next().charAt(0);
+                    String ch_str = sc.nextLine();
+                    while(ch_str.length() != 1)
+                    {
+                        System.out.println("please enter only one letter at a time");
+                        ch_str = sc.nextLine();
+                    }
+                    ch = ch_str.charAt(0);
                 }
                 else
                 {
