@@ -21,7 +21,7 @@ class hangman_28_10
     void main_menu()throws FileNotFoundException
     {
         //header
-        System.out.println("88");                                                                            
+        System.out.println("\f88");                                                                            
         System.out.println("88                                                                                        ______________________________________");                                                                             
         System.out.println("88                                                                                        |                                    |");                                                                             
         System.out.println("88,dPPYba,  ,adPPYYba, 8b,dPPYba,   ,adPPYb,d8 88,dPYba,,adPYba,  ,adPPYYba, 8b,dPPYba,   |     ______    ______    ______     |");   
@@ -42,8 +42,9 @@ class hangman_28_10
         System.out.println("\n\t\t\t\t\t\tPLAY (p) > ");
         System.out.println("\n\t\t\t\t\t\tQUIT (q) > ");
         System.out.println("\n\t\t\t\t\t\tABOUT (a) > ");
+        System.out.println("\n\t\t\t\t\t\tHOW TO PLAY(h) >");
         char menu = sc.next().charAt(0);
-
+        menu = Character.toLowerCase(menu);
         //if the choice is play, give sub menu to 
         switch(menu)
         {
@@ -62,11 +63,11 @@ class hangman_28_10
             System.out.println("enter your choice (1-6) : ");
             char choice = sc.next().charAt(0);//choice of category
             n_choice = (int)choice - 48;
-            boolean flag = false;
-            while (flag == false)
+            boolean flag1 = false;
+            while (flag1 == false)
             {
                 if(n_choice>=1 && n_choice<=6)
-                    flag = true;
+                    flag1 = true;
                 else
                 {
                     System.out.println ("enter numbers only from 1 to 6!");
@@ -89,12 +90,54 @@ class hangman_28_10
             System.out.println("We are also grateful to our parents for their undying support throughout the course of this project");
             System.out.println("\n\nFun for all ages... we hope you enjoy this classic game ;)");
             System.out.println("\n< back(b)");
-            char back = sc.next().charAt(0);
-            if(back == 'b')
+            char back1 = sc.next().charAt(0);
+            back1 = Character.toLowerCase(back1);
+            boolean flag2 = false;
+            while(flag2 == false)
             {
-                main_menu();
+                if(back1 == 'b')
+                {
+                    flag2 = true;
+                    main_menu();
+                }
+                else
+                {
+                    System.out.println("invalid input (press b to go back)");
+                    back1 = sc.next().charAt(0);
+                    back1 = Character.toLowerCase(back1);
+                }
             }
             break;
+
+            case 'h':
+
+            System.out.println("\f>press p to start the game");
+            System.out.println(">choose a category");
+            System.out.println(">your word consists of the same number of letters as dashes on the screen");
+            System.out.println(">with every wrong guess a part of the man's body is added to the gallow");
+            System.out.println(">you gain points based on the number of wrong guesses you made in the process of guessing");
+            System.out.println(">if you lose all seven of your lives in a round... you lose and you may not proceed adding to your previous game score");
+            System.out.println("***************ALL THE BEST*****************");
+            System.out.println("\n\n\n\n<back (b)");
+            char back2 = sc.next().charAt(0);
+            back2 = Character.toLowerCase(back2);
+            boolean flag3 = false;
+            while(flag3 == false)
+            {
+                if(back2 == 'b')
+                {
+                    flag3 = true;
+                    main_menu();
+                }
+                else
+                {
+                    System.out.println("invalid input (press b to go back)");
+                    back2 = sc.next().charAt(0);
+                    back2 = Character.toLowerCase(back2);
+                }
+            }
+            break;
+
             default :
             main_menu();
             break;
@@ -104,7 +147,7 @@ class hangman_28_10
     void arrays()//to define arrays and obtain the word from them
     {
         if (n_choice == 1)
-            arr = new String[]{"idli", "aloo paratha", "cereal", "pancake", "dosa", "omelette","baked beans", "pomegranate", "avocado", "passion fruit", "cranberry", "apricots", "cantaloupe", "nectarine","apple", "banana", "bread", "sandwich", "burger", "pizza", "bagel", "baguette", "guava", "pomagranate", "cake", "pastry", "ice cream", "pasta", "noodles", "spaghetti", "ketchup", "mayonnaise","dumplings", "fried rice", "apple pie", "salads", "tomato soup","orange", "grape", "dates", "grapefruit" };
+            arr = new String[]{"idli", "aloo paratha", "cereal", "pancake", "dosa", "omelette","baked beans", "pomegranate", "avocado", "passion fruit", "cranberry", "apricot", "cantaloupe", "nectarine","apple", "banana", "bread", "sandwich", "burger", "pizza", "bagel", "baguette", "guava", "pomagranate", "cake", "pastry", "ice cream", "pasta", "noodles", "spaghetti", "ketchup", "mayonnaise","dumplings", "fried rice", "apple pie", "salad", "tomato soup","orange", "grape", "dates", "grapefruit" };
         if (n_choice == 2)
             arr = new String[]{"mathematics", "computer science", "physics", "history", "geography", "chemistry", "biology", "literature", "sociology","economics", "software engineering", "law", "medicine", "nursing", "agricultural", "archaeology","political science", "biotechnology", "industrial design", "animal science", "mechanical engineering", "sound engineering", "philosophy", "journalism", "linguistics", "arts", "astronomy", "statistics", };
         if (n_choice == 3)
@@ -190,27 +233,25 @@ class hangman_28_10
             {    
                 System.out.println("please enter a letter: ");
                 String ch_str = sc.nextLine();
-                while(ch_str.length() != 1)
+                for(int  j = 0; ch_str.length() != 1; j++)//to prevent entry of more than one letter at a time
                 {
-                    System.out.println("please enter only one letter at a time");
+                    if (j != 0)//so that it does not display message without entry of a letter(s)
+                        System.out.println("please enter only one letter at a time");
                     ch_str = sc.nextLine();
                 }
                 ch = ch_str.charAt(0);//to accept user input of letter
             }
-            // linear search for letter repitition check
-            /*for(int i = 0 ; i<26; i++)
-            {
-            System.out.println(used_letters[i]);
-            }*/
-            for(int i = 0; i<counter; i++)
+
+            for(int i = 0; i<counter; i++)//to check for used letters
             {
                 if(used_letters[i] ==ch)
                 {
-                    System.out.println("do not enter the same letter twice... try again: ");
+                    System.out.println("please do not enter the same letter twice... try again: ");
                     String ch_str = sc.nextLine();
-                    while(ch_str.length() != 1)
+                    for(int j = 0; ch_str.length() != 1; j++)
                     {
-                        System.out.println("please enter only one letter at a time");
+                        if (j != 0)
+                            System.out.println("please enter only one letter at a time");
                         ch_str = sc.nextLine();
                     }
                     ch = ch_str.charAt(0);
@@ -395,7 +436,10 @@ class hangman_28_10
                 {
                     flag = true;
                     if (cont == 'n')
+                    {
+                        highscore(); 
                         main();
+                    }
                 }
                 else
                 {
