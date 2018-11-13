@@ -37,7 +37,7 @@ class hangman_28_10
         System.out.println("                                                                                          |                                    |");
         System.out.println("                                                                                          --------------------------------------");  
         //end of header
-        System.out.println("\n\n\n\n");
+        System.out.println("\n\n");
         highscore();
         System.out.println("\n\t\t\t\t\t\tPLAY (p) > ");
         System.out.println("\n\t\t\t\t\t\tQUIT (q) > ");
@@ -247,6 +247,7 @@ class hangman_28_10
                 if(used_letters[i] ==ch)
                 {
                     System.out.println("please do not enter the same letter twice... try again: ");
+                    i = 0;
                     String ch_str = sc.nextLine();
                     for(int j = 0; ch_str.length() != 1; j++)
                     {
