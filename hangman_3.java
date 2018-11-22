@@ -10,7 +10,6 @@ class hangman_3
     int an;//for random number generation
     String word;
     int guess_len;
-    String guess;
     int hang;
     int score;
     int score1;//void repeat
@@ -62,7 +61,7 @@ class hangman_3
             System.out.println("\n\tEnter your CHOICE (1-6) :- ");
             
             char choice = sc.next().charAt(0);//choice of category
-            n_choice = (int)choice - 48;
+            n_choice = (int)choice - 48;//ascii to normal numbers
             boolean flag1 = false;
             while (flag1 == false)
             {
@@ -201,7 +200,7 @@ class hangman_3
     {
         String mod3 = word + " ";//for guess
         String mod2 = word + " ";//for guess_len
-        guess = "";
+        String guess = "";
         hang = 0;
         for (int i = 0; i<=word.length() - 1; i++)
         {    
@@ -281,12 +280,12 @@ class hangman_3
                     char ch3 = mod3.charAt(j);
                     if (ch3 == ch) // to check which position the letter ch is at
                     {
-                        char arr[] = guess.toCharArray();//string to array(with dashes)
-                        arr[j] = ch;
+                        char guess_arr[] = guess.toCharArray();//string to array(with dashes)
+                        guess_arr[j] = ch;
                         guess = "";// resetting guess
-                        for (int i = 0;i<arr.length;i++)
+                        for (int i = 0;i<guess_arr.length;i++)
                         {
-                            char ch4 = arr[i];
+                            char ch4 = guess_arr[i];
                             guess = guess+ch4;//restoring guess with modificaations
                         }
                     }
