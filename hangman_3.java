@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-class hangman_28_10
+class hangman_3
 {
     Scanner sc = new Scanner(System.in);
     int n_choice ;
@@ -15,40 +15,41 @@ class hangman_28_10
     int score;
     int score1;//void repeat
     String category;
-    //int highscore;
     private static Scanner x;//scanner step 1
     //game module$$$$$
     void main_menu()throws FileNotFoundException
     {
         //header
-        System.out.println("\f88");                                                                            
-        System.out.println("88                                                                                        ______________________________________");                                                                             
-        System.out.println("88                                                                                        |                                    |");                                                                             
-        System.out.println("88,dPPYba,  ,adPPYYba, 8b,dPPYba,   ,adPPYb,d8 88,dPYba,,adPYba,  ,adPPYYba, 8b,dPPYba,   |     ______    ______    ______     |");   
-        System.out.println("88P'    '8a ''     `Y8 88P'   `'8a a8'    `Y88 88P'   '88'    '8a ''     `Y8 88P'   `'8a  |    /      \\  /      \\  /      \\    |");  
-        System.out.println("88       88 ,adPPPPP88 88       88 8b       88 88      88      88 ,adPPPPP88 88       88  |   /$$$$$$  |/$$$$$$  |/$$$$$$  |   |");  
-        System.out.println("88       88 88,    ,88 88       88 '8a,   ,d88 88      88      88 88,    ,88 88       88  |   $$ |  $$ |$$ |  $$/ $$ |  $$ |   |"); 
-        System.out.println("88       88 `'8bbdP'Y8 88       88  `'YbbdP'Y8 88      88      88 `'8bbdP'Y8 88       88  |   $$ |__$$ |$$ |      $$ \\__$$     |");  
-        System.out.println("                                    aa,    ,88                                            |   $$    $$/ $$ |      $$    $$/    |");
-        System.out.println("                                     'Y8bbdP'                                             |   $$$$$$$/  $$/        $$$$$$/     |");    
-        System.out.println("                                                                                          |   $$ |                             |");
-        System.out.println("                                                                                          |   $$ |                             |");
-        System.out.println("                                                                                          |   $$/                              |");   
-        System.out.println("                                                                                          |                                    |");
-        System.out.println("                                                                                          --------------------------------------");  
+        System.out.println("\f\t\t\t88");                                                                            
+        System.out.println("\t\t\t88                                                                                        ");                                                                             
+        System.out.println("\t\t\t88                                                                                        ");                                                                             
+        System.out.println("\t\t\t88,dPPYba,  ,adPPYYba, 8b,dPPYba,   ,adPPYb,d8 88,dPYba,,adPYba,  ,adPPYYba, 8b,dPPYba,   ");   
+        System.out.println("\t\t\t88P'    '8a ''     `Y8 88P'   `'8a a8'    `Y88 88P'   '88'    '8a ''     `Y8 88P'   `'8a  ");  
+        System.out.println("\t\t\t88       88 ,adPPPPP88 88       88 8b       88 88      88      88 ,adPPPPP88 88       88  ");  
+        System.out.println("\t\t\t88       88 88,    ,88 88       88 '8a,   ,d88 88      88      88 88,    ,88 88       88  "); 
+        System.out.println("\t\t\t88       88 `'8bbdP'Y8 88       88  `'YbbdP'Y8 88      88      88 `'8bbdP'Y8 88       88  ");  
+        System.out.println("\t\t\t                                    aa,    ,88                                            ");
+        System.out.println("\t\t\t                                     'Y8bbdP'                                             ");    
+        System.out.println("\t\t\t                                                                                          ");
+        System.out.println("                                                                                          ");
+        System.out.println("                                                                                          ");   
+        System.out.println("                                                                                          ");
+        System.out.println("                                                                                          ");  
         //end of header
         System.out.println("\n\n");
-        highscore();
-        System.out.println("\n\t\t\t\t\t\tPLAY (p) > ");
-        System.out.println("\n\t\t\t\t\t\tQUIT (q) > ");
-        System.out.println("\n\t\t\t\t\t\tABOUT (a) > ");
-        System.out.println("\n\t\t\t\t\t\tHOW TO PLAY(h) >");
-        char menu = sc.next().charAt(0);
+        highscore();//highscore display in the main menu
+        
+        //presenting options in the first menu
+        System.out.println("\n\t\t\t\t\t\t\tPLAY (p) > ");
+        System.out.println("\n\t\t\t\t\t\t\tQUIT (q) > ");
+        System.out.println("\n\t\t\t\t\t\t\tABOUT (a) > ");
+        System.out.println("\n\t\t\t\t\t\t\tHOW TO PLAY(h) >");
+        char menu = sc.next().charAt(0);// to accept user choice for switch case
         menu = Character.toLowerCase(menu);
         //if the choice is play, give sub menu to 
         switch(menu)
         {
-            case 'p':
+            case 'p':// the user has chosen to play
             System.out.println("\f\tCHOOSE a category:- ");
             //enter category names
             System.out.println("\n\tOption 1: Food and fruits");
@@ -58,9 +59,8 @@ class hangman_28_10
             System.out.println("\n\tOption 5: Shows"); 
             System.out.println("\n\tOption 6: Animals");
             String submenu[] = {"Food and fruits", "Subjects and fields of study", "Sports", "Movies", "Shows", "Animals"};
-
-            //enter category names
-            System.out.println("enter your choice (1-6) : ");
+            System.out.println("\n\tEnter your CHOICE (1-6) :- ");
+            
             char choice = sc.next().charAt(0);//choice of category
             n_choice = (int)choice - 48;
             boolean flag1 = false;
@@ -70,7 +70,7 @@ class hangman_28_10
                     flag1 = true;
                 else
                 {
-                    System.out.println ("enter numbers only from 1 to 6!");
+                    System.out.println ("\n\tEnter numbers only from 1 to 6!!!");
                     choice = sc.next().charAt(0);//choice of category
                     n_choice = (int)choice - 48;
                 }
@@ -78,21 +78,22 @@ class hangman_28_10
             category = submenu[n_choice - 1];
 
             break;
-            case 'q':
+            case 'q':// quit game
             System.exit(0);
             break;
-            case 'a':
+            case 'a'://about
 
-            System.out.println("\fThis game is created by Aravind Krishnan.A and Advik Giridhar as a part of our 10th grade Board Project.");
+            System.out.println("\fThis game is created by Aravind Krishnan A and Advik Giridhar as a part of our 10th grade Board Project.");
             System.out.println("Hangman is a game in which one player tries to guess the letters of a word in seven chances.");
             System.out.println("We record the failed attempts by the player by drawing a gallow and a man hanging on it,line by line (mistake by mistake)");
-            System.out.println("\n\n\t\t\t\t*********ACKNOWLEDGEMENTS***********\nWe extend a special thanks to our computer teacher Mrs.Padma and the ICSE Board for this wonderful opportunity");
+            System.out.println("\n***********************************************ACKNOWLEDGEMENTS***********************************************\n\nWe extend a special thanks to our computer teacher Mrs.Padma and the ICSE Board for this wonderful opportunity");
             System.out.println("We are also grateful to our parents for their undying support throughout the course of this project");
-            System.out.println("\n\nFun for all ages... we hope you enjoy this classic game ;)");
-            System.out.println("\n< back(b)");
-            char back1 = sc.next().charAt(0);
+            System.out.println("\nFun for all ages... we hope you enjoy this classic game ;) ... GOOD LUCK");
+            System.out.println("\n< TO GO BACK (b)");
+            char back1 = sc.next().charAt(0);//to go back to main menu
             back1 = Character.toLowerCase(back1);
             boolean flag2 = false;
+            //handling invalid inputs
             while(flag2 == false)
             {
                 if(back1 == 'b')
@@ -102,26 +103,26 @@ class hangman_28_10
                 }
                 else
                 {
-                    System.out.println("invalid input (press b to go back)");
+                    System.out.println("INVALID Input (press b to go back)");
                     back1 = sc.next().charAt(0);
                     back1 = Character.toLowerCase(back1);
                 }
             }
             break;
 
-            case 'h':
+            case 'h'://how to play
 
-            System.out.println("\f>press p to start the game");
-            System.out.println(">choose a category");
-            System.out.println(">your word consists of the same number of letters as dashes on the screen");
-            System.out.println(">with every wrong guess a part of the man's body is added to the gallow");
-            System.out.println(">you gain points based on the number of wrong guesses you made in the process of guessing");
-            System.out.println(">if you lose all seven of your lives in a round... you lose and you may not proceed adding to your previous game score");
-            System.out.println("***************ALL THE BEST*****************");
+            System.out.println("\f\t>press p to start the game");
+            System.out.println("\t>choose a category");
+            System.out.println("\t>your word consists of the same number of letters as dashes on the screen");
+            System.out.println("\t>with every wrong guess a part of the man's body is added to the gallow");
+            System.out.println("\t>you gain points based on the number of wrong guesses you made in the process of guessing");
+            System.out.println("\t>if you lose all seven of your lives in a round... you lose and you may not proceed adding to your previous game score");
             System.out.println("\n\n\n\n<back (b)");
             char back2 = sc.next().charAt(0);
-            back2 = Character.toLowerCase(back2);
+            back2 = Character.toLowerCase(back2);//to go back to main menu
             boolean flag3 = false;
+            //handling invalid inputs
             while(flag3 == false)
             {
                 if(back2 == 'b')
@@ -131,14 +132,14 @@ class hangman_28_10
                 }
                 else
                 {
-                    System.out.println("invalid input (press b to go back)");
+                    System.out.println("INVALID Input (press b to go back to home page)");
                     back2 = sc.next().charAt(0);
                     back2 = Character.toLowerCase(back2);
                 }
             }
             break;
 
-            default :
+            default ://handling invalid inputs
             main_menu();
             break;
         }
@@ -162,36 +163,35 @@ class hangman_28_10
         b = 0;//lower limit
         an = (int) (Math.random()*(a-b) + b);//random number within limit of 
         word = arr[an];//word at random position
-        //System.out.println(word);
-        //System.out.println(an);
     }
 
     void len_str()//to find length of word excluding repititions
     {
-        String mod = word + " ";//modifiable string
+        // '*' is a character used to to replace the checked letters in string mod
+        String mod1 = word + " ";//modifiable string
         int c1 = 0;//counter
         int c2 = 0;//counter
-        for (int i = 0; i< mod.length() - 1; i++)
+        for (int i = 0; i< mod1.length() - 1; i++)
         {
-            char ch1 = mod.charAt(i);
-            for (int j = i +1;j< mod.length() - 1; j++)
+            char ch1 = mod1.charAt(i);
+            for (int j = i +1;j< mod1.length() - 1; j++)
             {
-                char ch2 = mod.charAt(j);
+                char ch2 = mod1.charAt(j);
+                // checking if the character is repeated except if it is a replacement character(*) 
                 if (ch1 == ch2 && ch1 != '*')
                 {    
                     c1++;
                 }
             }
-            if (ch1 == ' ')
+            if (ch1 == ' ')//excluding spaces in word length calculations
             {
                 c2++;
             }
-            //System.out.println(ch1);
-            //System.out.println(c);
-            mod = mod.replace(ch1, '*');
-            //c = 0;
+            mod1 = mod1.replace(ch1, '*');
         }
         guess_len = word.length() - c1 - c2;//eliminating repeated letters and whitespaces from length
+        
+        // following statements only for debugging purposes in case of errors (not displayed anywhere because screen is frequently refreshed)
         System.out.println(guess_len);
         System.out.println(c1);
         System.out.println(c2);
@@ -210,9 +210,9 @@ class hangman_28_10
             else
                 guess += "_";
         }
-        //ascii man
+        //ascii man first display
         System.out.println("\f");
-        System.out.println("category: " + category);
+        System.out.println("\n\t\t\t\t\t\t\tCATEGORY: " + category);
         System.out.println("\t    _________");
         System.out.println("\t    |/ ");
         System.out.println("\t    |");
@@ -221,23 +221,25 @@ class hangman_28_10
         System.out.println("\t    |");
         System.out.println("\t    |");
         System.out.println("\t    |");
-        System.out.println("\t____|____\t\t\t  " + guess);// guess prints no of dashes
+        System.out.println("\t____|____\t\t\t\t\t  " + guess);// guess prints no of dashes
         //ascii man ends
         int counter = 0;
         char used_letters[] = new char[27];
-        while (guess_len != 0)
+        while (guess_len != 0)// until word is guesssed
         {   
             char ch = '1';
             counter++;
-            while(Character.isLetter(ch) == false)
+            while(Character.isLetter(ch) == false)//always enter the loop atleast once
             {    
-                System.out.println("please enter a letter: ");
+                System.out.println("\n\t\t\t\t\t\t\tPLEASE enter a letter: ");
                 String ch_str = sc.nextLine();
+                ch_str = ch_str.toLowerCase();
                 for(int  j = 0; ch_str.length() != 1; j++)//to prevent entry of more than one letter at a time
                 {
                     if (j != 0)//so that it does not display message without entry of a letter(s)
-                        System.out.println("please enter only one letter at a time");
-                    ch_str = sc.nextLine();
+                        System.out.println("\n\t\t\t\t\t\t\tPLEASE enter only ONE LETTER AT A TIME!!");
+                    ch_str = sc.nextLine();//accepts as string tyre for handling invalid inputs
+                    ch_str = ch_str.toLowerCase();
                 }
                 ch = ch_str.charAt(0);//to accept user input of letter
             }
@@ -246,18 +248,19 @@ class hangman_28_10
             {
                 if(used_letters[i] ==ch)
                 {
-                    System.out.println("please do not enter the same letter twice... try again: ");
-                    i = 0;
+                    System.out.println("\n\t\t\t\t\t\t\tPLEASE DO NOT enter the SAME LETTER... TRY Again: ");
+                    i = 0;//to reset the index of array to 0
                     String ch_str = sc.nextLine();
                     for(int j = 0; ch_str.length() != 1; j++)
                     {
                         if (j != 0)
-                            System.out.println("please enter only one letter at a time");
+                            System.out.println("\n\t\t\t\t\t\t\tPLEASE enter only ONE LETTER AT A TIME!!");
                         ch_str = sc.nextLine();
+                        ch_str = ch_str.toLowerCase();
                     }
                     ch = ch_str.charAt(0);
                 }
-                else
+                else// if letter is not repeated, add letter to used_letters[]
                 {
                     used_letters[counter] = ch;
                     //System.out.println(used_letters[counter]);
@@ -265,7 +268,7 @@ class hangman_28_10
 
             }
             int detect = mod2.indexOf(ch);//to check if the character is there in the string
-            if (detect == -1)
+            if (detect == -1)//if the character is not present
             {
                 hang ++;
             }
@@ -276,19 +279,16 @@ class hangman_28_10
                 for (int j = 0; j<mod3.length()-1; j++)
                 {
                     char ch3 = mod3.charAt(j);
-                    if (ch3 == ch)
+                    if (ch3 == ch) // to check which position the letter ch is at
                     {
-                        char arr[] = guess.toCharArray();//string to array
+                        char arr[] = guess.toCharArray();//string to array(with dashes)
                         arr[j] = ch;
-                        guess = "";
+                        guess = "";// resetting guess
                         for (int i = 0;i<arr.length;i++)
                         {
                             char ch4 = arr[i];
-                            guess = guess+ch4;
+                            guess = guess+ch4;//restoring guess with modificaations
                         }
-                        //guess = guess.replace(guess.charAt(j),ch);
-                        //clear screen
-                        //System.out.println(guess);
                     }
 
                 }
@@ -296,8 +296,9 @@ class hangman_28_10
                 guess_len--;
                 mod2 = mod2.replace(ch, '*');
             }
+            //ascii man module
             System.out.println("\f");
-            System.out.println("category: " + category);
+            System.out.println("\n\t\t\t\t\t\t\tCATEGORY: " + category);
             if(hang == 0)
             {
                 System.out.println("\t    _________");
@@ -308,7 +309,7 @@ class hangman_28_10
                 System.out.println("\t    |");
                 System.out.println("\t    |");
                 System.out.println("\t    |");
-                System.out.println("\t____|____\t\t\t  " + guess);
+                System.out.println("\t____|____\t\t\t\t\t  " + guess);
 
             } 
             if(hang == 1)
@@ -321,115 +322,121 @@ class hangman_28_10
                 System.out.println("\t    |");
                 System.out.println("\t    |");
                 System.out.println("\t    |");
-                System.out.println("\t____|____\t\t\t  " + guess);
+                System.out.println("\t____|____\t\t\t\t\t  " + guess);
 
             }
             if(hang == 2)
             {
                 System.out.println("\t    _________");
                 System.out.println("\t    |/      |");
-                System.out.println("\t    |      (_)");
+                System.out.println("\t    |     (o o)");
                 System.out.println("\t    |"); 
                 System.out.println("\t    |");
                 System.out.println("\t    |");
                 System.out.println("\t    |");
                 System.out.println("\t    |");
-                System.out.println("\t____|____\t\t\t  " + guess);
+                System.out.println("\t____|____\t\t\t\t\t  " + guess);
 
             } 
             if(hang == 3)
             {
                 System.out.println("\t    _________");
                 System.out.println("\t    |/      |");
-                System.out.println("\t    |      (_)");
+                System.out.println("\t    |     (o o)");
                 System.out.println("\t    |       |");
                 System.out.println("\t    |       |");
                 System.out.println("\t    |");
                 System.out.println("\t    |");
                 System.out.println("\t    |");
-                System.out.println("\t____|____\t\t\t  " + guess);
+                System.out.println("\t____|____\t\t\t\t\t  " + guess);
 
             }   
             if(hang == 4)
             {
                 System.out.println("\t    _________");
                 System.out.println("\t    |/      |");
-                System.out.println("\t    |     \\(_)");
+                System.out.println("\t    |     (o o)");
+                System.out.println("\t    |     \\ |");
                 System.out.println("\t    |      \\|");
-                System.out.println("\t    |       |");
                 System.out.println("\t    |");
                 System.out.println("\t    |");
                 System.out.println("\t    |");
-                System.out.println("\t____|____\t\t\t  " + guess);
+                System.out.println("\t____|____\t\t\t\t\t  " + guess);
 
             } 
             if(hang == 5)
             {
                 System.out.println("\t    _________");
                 System.out.println("\t    |/      |");
-                System.out.println("\t    |     \\(_)/");
+                System.out.println("\t    |     (o o)");
+                System.out.println("\t    |     \\ | /");
                 System.out.println("\t    |      \\|/");
-                System.out.println("\t    |       |");
                 System.out.println("\t    |");
                 System.out.println("\t    |");
                 System.out.println("\t    |");
-                System.out.println("\t____|____\t\t\t  " + guess);
+                System.out.println("\t____|____\t\t\t\t\t  " + guess);
 
             } 
             if(hang == 6)
             {
                 System.out.println("\t    _________");
                 System.out.println("\t    |/      |");
-                System.out.println("\t    |     \\(_)/");
+                System.out.println("\t    |     (o o)");
+                System.out.println("\t    |     \\ | /");
                 System.out.println("\t    |      \\|/");
-                System.out.println("\t    |       |");
                 System.out.println("\t    |      /");
                 System.out.println("\t    |     /");
                 System.out.println("\t    |");
-                System.out.println("\t____|____\t\t\t  " + guess);
+                System.out.println("\t____|____\t\t\t\t\t  " + guess);
 
             } 
             if (hang == 7)//man hangs at 7 tries
             {
-                System.out.println("GAME OVER\n\n");
+                System.out.println("\n\t\t\t .88888.                                   .88888.                            ");
+                System.out.println("\t\t\td8'   `88                                 d8'   `8b                           ");
+                System.out.println("\t\t\t88        .d8888b. 88d8b.d8b. .d8888b.    88     88 dP      Pd .d8888b. 88d889");
+                System.out.println("\t\t\t88   YP88 88'  `88 88'`88'`88 88ooood8    88     88  88    d8' 88ooood8 88'  ");
+                System.out.println("\t\t\tY8.   .88 88.  .88 88  88  88 88.  ...    Y8.   .8P   88  88'  88.  ... 88     "); 
+                System.out.println("\t\t\t `88888'  `88888P  88  88  88 `88888P'     `8888P'     888P'   `88888P' dP      ");
                 // ascii man
                 System.out.println("\t    _________");
                 System.out.println("\t    |/      |");
-                System.out.println("\t    |     \\(_)/");
-                System.out.println("\t    |      \\|/\t\t your word was: " + word);
-                System.out.println("\t    |       |");
+                System.out.println("\t    |     (o o)");
+                System.out.println("\t    |     \\ | /\t\t\t\t\tYOUR WORD WAS: " + word);
+                System.out.println("\t    |      \\|/");
                 System.out.println("\t    |      / \\");
                 System.out.println("\t    |     /   \\");
                 System.out.println("\t    |");
                 System.out.println("\t____|____");
-                System.out.println("score: " + score1);
+                System.out.println("\n\t\t\t\t\t\t\tSCORE: " + score1);
                 return;
             }
             //ascii man ends  
 
             //onscreen elements
-            System.out.println("\t\t\t\tguesses left: " + (7-hang));
-            System.out.println("\t\t\t\tscore: " + score1);
+            System.out.println("\n\t\t\t\t\t\t\tGuesses LEFT: " + (7-hang));
+            System.out.println("\n\t\t\t\t\t\t\tSCORE: " + score1);
         }
         if (guess_len == 0)
-            System.out.println("yaay!");
+            System.out.println("\n\t\t\t\t\t\t\tWOOOHOOO!");
     }
     // scoring module$$$$$
     void score()
     {
         score = ((7 - hang));
-        System.out.println("\n\ngame score: " + score);
+        System.out.println("\n\t\t\t\t\t\t\tGAME SCORE: " + score);
     }
 
     void repeat()throws FileNotFoundException
     {
-        int n = arr.length;
-        for(score1 = score; hang != 7; score1 += score, n--)
+        int n = arr.length;//to generate random number again
+        for(score1 = score; hang != 7; score1 += score, n--)//all guesses after the first word
         {
-            System.out.println("score: " + score1);
-            System.out.println("continue? (y/n): ");
+            System.out.println("\n\t\t\t\t\t\t\tSCORE: " + score1);
+            System.out.println("\n\t\t\t\t\t\t\tWould you like to CONTINUE? (y/n): ");
             char cont = sc.next().charAt(0);
             cont = Character.toLowerCase(cont);
+            //for handling invalid inputs
             boolean flag = false;
             while (flag == false)
             {    
@@ -444,18 +451,18 @@ class hangman_28_10
                 }
                 else
                 {
-                    System.out.println("enter only y or n!");
+                    System.out.println("\n\t\t\t\t\t\t\tENTER ONLY y OR n!");
                     cont = sc.next().charAt(0);
                     cont = Character.toLowerCase(cont);
                 }
             }
 
-            //input();
-            for (int i = an+1; i<n; i++)
+            for (int i = an+1; i<n; i++)//to remove used word from the array to ensure there is no repitition
             {
                 arr[i-1] = arr[i];
             }
-            System.out.println("Array elements: ");
+            // only for debugging purposes
+            System.out.println("ARRAY elements: ");
             for(int i = 0; i<n; i++)
             {
                 System.out.println(arr[i]);
@@ -464,12 +471,12 @@ class hangman_28_10
             b = 0;//lower limit
             an = (int) (Math.random()*(a-b) + b);//random number within limit of 
             word = arr[an];//word at random position
-            //arrays();
-            if(n == 1)
+            if(n == 1)//when the limit of the array is reached
             {
-                System.out.println("limit reached!!!");
+                System.out.println("\n\t\t\t\t\t\t\tLIMIT REACHED!!!!!");
                 return;
             }
+            //only void arrays is not re-executed since the same array is in use
             len_str();
             guess();
             score();
@@ -497,16 +504,16 @@ class hangman_28_10
         }
         catch (Exception e)
         {
-            System.out.println("Error");
+            System.out.println("\n\t\t\t\t\t\t\tERROR");
         }
         if (found == true)
         {     
             highscore = Integer.parseInt(high_str);
-            System.out.println("highscore = " + highscore);
+            System.out.println("\n\t\t\t\t\t\t\tHIGHSCORE: " + highscore);
         }
         else 
         {    
-            System.out.println("Record not found");
+            System.out.println("\n\t\t\t\t\t\t\tRecord NOT found");
             highscore = 0;
         }
 
@@ -519,17 +526,18 @@ class hangman_28_10
             sb.append(highscore);
             pw.write(sb.toString());//writes into the csv file
             pw.close();
-            System.out.println("Highscore: " + highscore);
+            System.out.println("\n\t\t\t\t\t\t\tHIGHSCORE: " + highscore);
         }
     }
 
     void restart()throws FileNotFoundException
     {
-        System.out.println("Restart or quit? r/q");
+        System.out.println("\n\t\t\t\t\t\t\tRESTART or QUIT? r/q");
         char re = sc.next().charAt(0);
         re = Character.toLowerCase(re);
+        
+        // to handle invalid inputs
         boolean flag = false;
-
         while(flag == false)
         {
             if (re == 'r')
@@ -544,7 +552,7 @@ class hangman_28_10
             }
             else
             {
-                System.out.println("enter only r or q!");
+                System.out.println("ENTER ONLY r OR q!");
                 //re = sc.next().charAt(0);
                 re = Character.toLowerCase(sc.next().charAt(0));
             }
@@ -553,7 +561,7 @@ class hangman_28_10
 
     static void main()throws FileNotFoundException
     {
-        hangman_28_10 obj = new hangman_28_10();
+        hangman_3 obj = new hangman_3();
         obj.main_menu();
         obj.arrays();
         obj.len_str();
@@ -564,4 +572,4 @@ class hangman_28_10
         obj.restart();
     }
 }
-/*notes:  the standard font size must be 13 for proper alignment*/
+/*notes:  the standard font size must be 12 for proper alignment*/
